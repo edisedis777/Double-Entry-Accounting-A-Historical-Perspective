@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Double-Entry Accounting: A Historical Perspective</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <h1>Double-Entry Accounting</h1>
+      <h2>A Simple Historical Perspective</h2>
+    </header>
+
+    <nav id="timeline-nav">
+      <button class="active" data-section="intro">Introduction</button>
+      <button data-section="origins">Origins</button>
+      <button data-section="principles">Key Principles</button>
+      <button data-section="ledger">The Ledger</button>
+      <button data-section="practice">Practice</button>
+    </nav>
+
+    <main>
+      <section id="intro" class="content-section active">
+        <h2>Introduction to Double-Entry Accounting</h2>
+        <p>
+          Double-entry accounting is a bookkeeping method where every financial
+          transaction affects at least two accounts. For each transaction:
+        </p>
+        <div class="accounting-rule">
+          <!-- Added spans for Debits/Credits color -->
+          <p>
+            <strong class="term-debit">Debits</strong> =
+            <strong class="term-credit">Credits</strong>
+          </p>
+        </div>
+        <p>
+          This system provides accuracy through balance and has been the
+          foundation of modern accounting for over 500 years.
+        </p>
+        <div class="navigation-buttons">
+          <button disabled>Previous</button>
+          <button onclick="showSection('origins')">Next</button>
+        </div>
+      </section>
+
+      <section id="origins" class="content-section">
+        <h2>Historical Origins</h2>
+        <div class="historical-figure">
+          <img src="Luca_Pacioli.jpg" alt="Portrait of Luca Pacioli" />
+          <div>
+            <h3>Luca Pacioli</h3>
+            <p class="date">1445-1517</p>
+          </div>
+        </div>
+        <p>
+          The double-entry system was first documented by Italian mathematician
+          Luca Pacioli in 1494. His book "Summa de Arithmetica" contained a
+          section on bookkeeping called "Particularis de Computis et Scripturis"
+          (Details of Calculation and Recording).
+        </p>
+        <p>
+          Venice was a major trading center, and merchants needed reliable
+          accounting systems to track their increasingly complex businesses. The
+          method had been used in practice for centuries before Pacioli
+          documented it.
+        </p>
+        <div class="navigation-buttons">
+          <button onclick="showSection('intro')">Previous</button>
+          <button onclick="showSection('principles')">Next</button>
+        </div>
+      </section>
+
+      <section id="principles" class="content-section">
+        <h2>Key Principles</h2>
+        <div class="accounting-equation">
+          <!-- Added spans with classes for coloring equation parts -->
+          <p>
+            <strong class="eq-assets">Assets</strong> =
+            <strong class="eq-liabilities">Liabilities</strong> +
+            <strong class="eq-equity">Equity</strong>
+          </p>
+        </div>
+        <p>
+          This fundamental equation is the basis of the balance sheet and
+          double-entry accounting.
+        </p>
+
+        <div class="account-types">
+          <div class="account-card">
+            <!-- Added span with class for coloring -->
+            <h3><span class="eq-assets">Assets</span></h3>
+            <p>What you own</p>
+            <!-- Added spans with classes for coloring rules -->
+            <p class="rule">
+              Increase with <span class="rule-debit">DEBIT</span>
+            </p>
+            <p class="rule">
+              Decrease with <span class="rule-credit">CREDIT</span>
+            </p>
+            <p class="examples">Examples: Cash, Inventory, Equipment</p>
+          </div>
+          <div class="account-card">
+            <!-- Added span with class for coloring -->
+            <h3><span class="eq-liabilities">Liabilities</span></h3>
+            <p>What you owe</p>
+            <!-- Added spans with classes for coloring rules -->
+            <p class="rule">
+              Increase with <span class="rule-credit">CREDIT</span>
+            </p>
+            <p class="rule">
+              Decrease with <span class="rule-debit">DEBIT</span>
+            </p>
+            <p class="examples">Examples: Loans, Accounts Payable</p>
+          </div>
+          <div class="account-card">
+            <!-- Added span with class for coloring -->
+            <h3><span class="eq-equity">Equity</span></h3>
+            <p>Owner's stake</p>
+            <!-- Added spans with classes for coloring rules -->
+            <p class="rule">
+              Increase with <span class="rule-credit">CREDIT</span>
+            </p>
+            <p class="rule">
+              Decrease with <span class="rule-debit">DEBIT</span>
+            </p>
+            <p class="examples">Examples: Capital, Retained Earnings</p>
+          </div>
+        </div>
+        <div class="navigation-buttons">
+          <button onclick="showSection('origins')">Previous</button>
+          <button onclick="showSection('ledger')">Next</button>
+        </div>
+      </section>
+
+      <section id="ledger" class="content-section">
+        <h2>The Ledger</h2>
+        <p>
+          Historically, transactions were recorded in journals, then transferred
+          to the ledger - a book of accounts. Each account had two sides:
+        </p>
+
+        <div class="t-account">
+          <div class="t-account-header">Account Name</div>
+          <div class="t-account-sides">
+            <div class="t-account-side">
+              <!-- Added class for coloring -->
+              <div class="t-side-header term-debit">Debit (Left)</div>
+              <div class="t-side-content" id="debit-side"></div>
+            </div>
+            <div class="t-account-side">
+              <!-- Added class for coloring -->
+              <div class="t-side-header term-credit">Credit (Right)</div>
+              <div class="t-side-content" id="credit-side"></div>
+            </div>
+          </div>
+        </div>
+
+        <p>
+          This T-shaped layout gave rise to the term "T-accounts" - a visual
+          representation still used in teaching accounting today.
+        </p>
+        <div class="navigation-buttons">
+          <button onclick="showSection('principles')">Previous</button>
+          <button onclick="showSection('practice')">Next</button>
+        </div>
+      </section>
+
+      <section id="practice" class="content-section">
+        <h2>Practice Example</h2>
+        <p>
+          Let's practice with a historical merchant scenario.
+          <strong>You can change the amounts!</strong>
+        </p>
+
+        <div class="scenario">
+          <p>A Venetian merchant in 1500:</p>
+          <ol>
+            <li>
+              Starts business with
+              <input
+                type="number"
+                id="initialCapitalInput"
+                value="1000"
+                min="0"
+                step="1"
+                class="editable-ducats" />
+              ducats (cash).
+            </li>
+            <li>
+              Buys inventory worth
+              <input
+                type="number"
+                id="inventoryCostInput"
+                value="600"
+                min="0"
+                step="1"
+                class="editable-ducats" />
+              ducats.
+            </li>
+            <li>
+              Sells that inventory for
+              <input
+                type="number"
+                id="salesPriceInput"
+                value="800"
+                min="0"
+                step="1"
+                class="editable-ducats" />
+              ducats.
+            </li>
+          </ol>
+        </div>
+
+        <div class="interactive-ledger">
+          <h3>Record these transactions (Updated Automatically)</h3>
+          <div class="transaction" id="transaction1">
+            <p><strong>Transaction 1:</strong> Starting business with cash</p>
+            <div class="journal-entry">
+              <div class="entry-row">
+                <span class="account">Cash</span>
+                <!-- Added class for coloring -->
+                <span class="debit number-debit" id="tx1Debit">1000</span>
+                <span class="credit"></span>
+              </div>
+              <div class="entry-row">
+                <span class="account">Owner's Capital</span>
+                <span class="debit"></span>
+                <!-- Added class for coloring -->
+                <span class="credit number-credit" id="tx1Credit">1000</span>
+              </div>
+            </div>
+            <button class="explain-btn" data-explanation="explanation1">
+              Explain
+            </button>
+            <div id="explanation1" class="explanation">
+              <p>
+                Cash (an <span class="eq-assets">Asset</span>) increases, so we
+                <span class="term-debit">debit</span> it. Owner's Capital (<span
+                  class="eq-equity"
+                  >Equity</span
+                >) increases, so we <span class="term-credit">credit</span> it.
+              </p>
+            </div>
+          </div>
+
+          <div class="transaction" id="transaction2">
+            <p><strong>Transaction 2:</strong> Buying inventory with cash</p>
+            <div class="journal-entry">
+              <div class="entry-row">
+                <span class="account">Inventory</span>
+                <!-- Added class for coloring -->
+                <span class="debit number-debit" id="tx2Debit">600</span>
+                <span class="credit"></span>
+              </div>
+              <div class="entry-row">
+                <span class="account">Cash</span>
+                <span class="debit"></span>
+                <!-- Added class for coloring -->
+                <span class="credit number-credit" id="tx2Credit">600</span>
+              </div>
+            </div>
+            <button class="explain-btn" data-explanation="explanation2">
+              Explain
+            </button>
+            <div id="explanation2" class="explanation">
+              <p>
+                Inventory (an <span class="eq-assets">Asset</span>) increases,
+                so we <span class="term-debit">debit</span> it. Cash (an
+                <span class="eq-assets">Asset</span>) decreases, so we
+                <span class="term-credit">credit</span> it.
+              </p>
+            </div>
+          </div>
+
+          <div class="transaction" id="transaction3">
+            <p><strong>Transaction 3:</strong> Selling inventory for cash</p>
+            <!-- Entry for the Sale -->
+            <div class="journal-entry">
+              <div class="entry-row">
+                <span class="account">Cash</span>
+                <!-- Added class for coloring -->
+                <span class="debit number-debit" id="tx3SaleDebit">800</span>
+                <span class="credit"></span>
+              </div>
+              <div class="entry-row">
+                <span class="account">Sales Revenue</span>
+                <span class="debit"></span>
+                <!-- Added class for coloring -->
+                <span class="credit number-credit" id="tx3SaleCredit">800</span>
+              </div>
+            </div>
+            <!-- Entry for the Cost of Goods Sold -->
+            <div class="journal-entry cost-entry">
+              <div class="entry-row">
+                <span class="account">Cost of Goods Sold</span>
+                <!-- Added class for coloring -->
+                <span class="debit number-debit" id="tx3CogsDebit">600</span>
+                <span class="credit"></span>
+              </div>
+              <div class="entry-row">
+                <span class="account">Inventory</span>
+                <span class="debit"></span>
+                <!-- Added class for coloring -->
+                <span class="credit number-credit" id="tx3CogsCredit">600</span>
+              </div>
+            </div>
+            <button class="explain-btn" data-explanation="explanation3">
+              Explain
+            </button>
+            <div id="explanation3" class="explanation">
+              <p>
+                This transaction has two parts: recording the revenue and
+                recording the cost of the item sold.
+              </p>
+              <p>
+                <em>Part 1: Record Revenue</em><br />
+                Cash (an <span class="eq-assets">Asset</span>) increases by the
+                selling price, so we <span class="term-debit">debit</span> it.
+                Sales Revenue (income, increases
+                <span class="eq-equity">Equity</span>) increases, so we
+                <span class="term-credit">credit</span> it.
+              </p>
+              <p>
+                <em>Part 2: Record Cost of Goods Sold (COGS)</em><br />
+                Cost of Goods Sold (an expense, decreases
+                <span class="eq-equity">Equity</span>) increases, so we
+                <span class="term-debit">debit</span> it. Inventory (an
+                <span class="eq-assets">Asset</span>) decreases because it was
+                sold, so we <span class="term-credit">credit</span> it by its
+                original cost.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="final-ledger">
+          <h3>Final Balances (Updated Automatically)</h3>
+          <table id="ledger-table">
+            <thead>
+              <tr>
+                <th>Account</th>
+                <th class="term-debit">Debit</th>
+                <!-- Added class -->
+                <th class="term-credit">Credit</th>
+                <!-- Added class -->
+                <th>Balance</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Added classes to data cells for color styling -->
+              <tr>
+                <td>Cash</td>
+                <td class="number-debit" id="cashDebitTotal">1800</td>
+                <td class="number-credit" id="cashCreditTotal">600</td>
+                <td class="balance-column" id="cashBalance">1200 (Dr)</td>
+                <!-- Class added by JS -->
+              </tr>
+              <tr>
+                <td>Inventory</td>
+                <td class="number-debit" id="inventoryDebitTotal">600</td>
+                <td class="number-credit" id="inventoryCreditTotal">600</td>
+                <td class="balance-column" id="inventoryBalance">0</td>
+                <!-- Class added by JS -->
+              </tr>
+              <tr>
+                <td>Owner's Capital</td>
+                <td class="number-debit" id="capitalDebitTotal">0</td>
+                <td class="number-credit" id="capitalCreditTotal">1000</td>
+                <td class="balance-column" id="capitalBalance">1000 (Cr)</td>
+                <!-- Class added by JS -->
+              </tr>
+              <tr>
+                <td>Sales Revenue</td>
+                <td class="number-debit" id="revenueDebitTotal">0</td>
+                <td class="number-credit" id="revenueCreditTotal">800</td>
+                <td class="balance-column" id="revenueBalance">800 (Cr)</td>
+                <!-- Class added by JS -->
+              </tr>
+              <tr>
+                <td>Cost of Goods Sold</td>
+                <td class="number-debit" id="cogsDebitTotal">600</td>
+                <td class="number-credit" id="cogsCreditTotal">0</td>
+                <td class="balance-column" id="cogsBalance">600 (Dr)</td>
+                <!-- Class added by JS -->
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <th>Totals</th>
+                <!-- Added class for coloring -->
+                <th class="number-debit" id="totalDebits">2000</th>
+                <!-- Added class for coloring -->
+                <th class="number-credit" id="totalCredits">2000</th>
+                <th>Debits = Credits</th>
+              </tr>
+            </tfoot>
+          </table>
+
+          <div class="profit-calculation">
+            <h3>Profit Calculation (Updated Automatically)</h3>
+            <p>Sales Revenue: <span id="profitSales">800</span></p>
+            <p>Cost of Goods Sold: <span id="profitCOGS">600</span></p>
+            <p>Profit: <span id="profitTotal">200</span> ducats</p>
+          </div>
+        </div>
+        <div class="navigation-buttons">
+          <button onclick="showSection('ledger')">Previous</button>
+          <button onclick="restartTutorial()">Restart Tutorial</button>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>A Simple Historical Perspective on Double-Entry Accounting</p>
+    </footer>
+  </body>
+</html>

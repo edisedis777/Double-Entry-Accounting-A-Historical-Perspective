@@ -1,0 +1,762 @@
+/* Base styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Improve base font rendering and scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Georgia", serif;
+  line-height: 1.6;
+  color: #4a3f35; /* Dark Sepia/Brown text */
+  background-color: #fdfbf5; /* Parchment/Cream background */
+  padding: 0;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+header {
+  background-color: #5d4037; /* Deep Brown */
+  color: #fdfbf5; /* Parchment text */
+  text-align: center;
+  padding: 1.5rem 1rem;
+  margin-bottom: 1rem;
+  border-bottom: 3px solid #8a6d3b; /* Muted Gold/Brown accent */
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.8rem;
+  color: #5d4037;
+}
+
+main {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  overflow-x: hidden;
+}
+
+footer {
+  background-color: #5d4037;
+  color: #fdfbf5;
+  text-align: center;
+  padding: 1rem;
+  margin-top: 2rem;
+  font-size: 0.9em;
+  font-style: italic;
+  border-top: 3px solid #8a6d3b;
+}
+
+/* Links */
+a {
+  color: #8a6d3b;
+  text-decoration: none;
+}
+a:hover {
+  color: #a0522d;
+  text-decoration: underline;
+}
+
+/* Color Coding Classes */
+.term-debit,
+.rule-debit,
+.number-debit,
+.balance-dr {
+  color: #00695c;
+  font-weight: bold;
+} /* Teal Green */
+.term-credit,
+.rule-credit,
+.number-credit,
+.balance-cr {
+  color: #a52a2a;
+  font-weight: bold;
+} /* Brown/Sienna */
+.eq-assets {
+  color: #2e7d32;
+  font-weight: bold;
+} /* Forest Green */
+.eq-liabilities {
+  color: #d84315;
+  font-weight: bold;
+} /* Deep Orange/Terracotta */
+.eq-equity {
+  color: #8a6d3b;
+  font-weight: bold;
+} /* Muted Gold/Brown */
+.balance-zero {
+  color: #7f8c8d;
+  font-weight: normal;
+} /* Optional: Grey for zero balance */
+
+/* Navigation */
+#timeline-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  padding: 0 1rem;
+}
+#timeline-nav button {
+  background-color: #e8e0d1;
+  border: 1px solid #c8bfa8;
+  border-radius: 4px;
+  padding: 0.6rem 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.95rem;
+  color: #4a3f35;
+}
+#timeline-nav button:hover {
+  background-color: #d8cabb;
+  border-color: #b8a998;
+}
+#timeline-nav button.active {
+  background-color: #8a6d3b;
+  border-color: #7a5d2b;
+  color: #fff;
+  font-weight: bold;
+}
+
+/* Content sections */
+.content-section {
+  display: none;
+  background-color: #fffefb;
+  padding: 1.5rem 2rem;
+  border-radius: 8px;
+  border: 1px solid #e8e0d1;
+  box-shadow: 0 3px 8px rgba(74, 63, 53, 0.15);
+  margin-bottom: 1.5rem;
+}
+.content-section.active {
+  display: block;
+  animation: fadeIn 0.5s ease-in-out;
+}
+.content-section p {
+  margin-bottom: 1rem;
+}
+.content-section p:last-child {
+  margin-bottom: 0;
+}
+
+/* Navigation Buttons */
+.navigation-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e8e0d1;
+}
+.navigation-buttons button {
+  background-color: #8a6d3b;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 0.7rem 1.2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+}
+.navigation-buttons button:disabled {
+  background-color: #c8bfa8;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+.navigation-buttons button:hover:not(:disabled) {
+  background-color: #7a5d2b;
+}
+
+/* Historical elements */
+.historical-figure {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  gap: 1.5rem;
+  background-color: #f9f6f0;
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid #e8e0d1;
+}
+.historical-figure img {
+  border-radius: 50%;
+  border: 3px solid #8a6d3b;
+  flex-shrink: 0;
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+}
+.historical-figure div {
+  flex-grow: 1;
+}
+.historical-figure h3 {
+  margin-bottom: 0.3rem;
+}
+.historical-figure .date {
+  font-style: italic;
+  color: #7f8c8d;
+  font-size: 0.9em;
+}
+
+/* Accounting elements */
+.accounting-rule,
+.accounting-equation {
+  background-color: #f5efe2;
+  border-left: 5px solid #8a6d3b;
+  padding: 1.2rem 1.5rem;
+  margin: 2rem 0;
+  font-size: 1.2rem;
+  text-align: center;
+  border-radius: 4px;
+  color: #4a3f35;
+}
+/* Ensure nested bold tags inherit color */
+.accounting-rule strong,
+.accounting-equation strong {
+  font-weight: bold;
+}
+
+.account-types {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+.account-card {
+  background-color: #fffdf7;
+  border: 1px solid #e8e0d1;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 5px rgba(74, 63, 53, 0.07);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.account-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(74, 63, 53, 0.12);
+}
+.account-card h3 {
+  color: #5d4037;
+  border-bottom: 2px solid #8a6d3b;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+}
+/* Ensure nested span color applies */
+.account-card h3 span {
+  font-weight: bold;
+} /* Color applied via eq-* classes */
+.account-card p {
+  margin-bottom: 0.5rem;
+}
+.account-card .rule {
+  font-weight: normal;
+  margin: 0.5rem 0;
+  font-size: 0.95em;
+} /* Make rule text normal, let span be bold */
+.account-card .examples {
+  font-style: italic;
+  color: #7f8c8d;
+  margin-top: 1rem;
+  font-size: 0.9em;
+}
+
+/* T-Account */
+.t-account {
+  margin: 2rem auto;
+  max-width: 500px;
+  border: 1px solid #c8bfa8;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(74, 63, 53, 0.08);
+}
+.t-account-header {
+  background-color: #8a6d3b;
+  color: white;
+  text-align: center;
+  padding: 0.7rem;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+.t-account-sides {
+  display: flex;
+  border-top: 1px solid #c8bfa8;
+  background-color: #fffefb;
+}
+.t-account-side {
+  flex: 1;
+  padding: 1rem;
+}
+.t-account-side:first-child {
+  border-right: 1px solid #c8bfa8;
+}
+.t-side-header {
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  padding-bottom: 0.7rem;
+  border-bottom: 2px solid #a1887f;
+} /* Color applied via term-* classes */
+.t-side-content {
+  min-height: 120px;
+}
+
+/* T-entry styles */
+.t-entry {
+  padding: 5px 0;
+  border-bottom: 1px dotted #d8cabb;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9rem;
+}
+.t-entry:last-child {
+  border-bottom: none;
+}
+.t-amount {
+  /* Base styling */
+  font-weight: bold;
+  min-width: 50px;
+  text-align: right;
+  padding-left: 10px;
+  font-family: monospace;
+} /* Color applied by number-* classes added via JS */
+.t-desc {
+  font-style: italic;
+  color: #6c5f53;
+  text-align: left;
+  flex-grow: 1;
+}
+
+/* Practical examples */
+.scenario {
+  background-color: #fff9e6;
+  border: 1px solid #fadd9e;
+  border-left: 5px solid #b8860b;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin: 2rem 0;
+  color: #4a3f35;
+}
+.scenario p:first-child {
+  margin-bottom: 1rem;
+}
+.scenario ol {
+  margin-left: 1.5rem;
+  margin-top: 0.8rem;
+  list-style-type: decimal;
+}
+.scenario li {
+  margin-bottom: 0.8rem;
+  line-height: 1.8;
+}
+.editable-ducats {
+  font-family: monospace;
+  font-size: 1em;
+  padding: 0.3rem 0.5rem;
+  border: 1px solid #c8bfa8;
+  border-radius: 4px;
+  margin: 0 0.3rem;
+  max-width: 100px;
+  text-align: right;
+  background-color: #fffefb;
+  color: #4a3f35;
+  box-shadow: inset 0 1px 2px rgba(74, 63, 53, 0.1);
+}
+.editable-ducats::-webkit-outer-spin-button,
+.editable-ducats::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.editable-ducats {
+  -moz-appearance: textfield;
+}
+
+.interactive-ledger {
+  margin: 2rem 0;
+}
+.interactive-ledger h3 {
+  margin-bottom: 1.5rem;
+}
+
+.transaction {
+  background-color: #f9f6f0;
+  border: 1px solid #e8e0d1;
+  border-radius: 8px;
+  padding: 1.2rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+.transaction p:first-child {
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.journal-entry {
+  margin: 1rem 0;
+  border: 1px solid #d8cabb;
+  border-radius: 4px;
+  overflow: hidden;
+  background-color: #fffefb;
+}
+.journal-entry.cost-entry {
+  margin-top: 1.5rem;
+}
+
+.entry-row {
+  display: grid;
+  grid-template-columns: 3fr 1fr 1fr;
+  padding: 0.6rem 0.8rem;
+  align-items: center;
+}
+.entry-row:nth-child(odd) {
+  background-color: #f7f3e9;
+}
+.entry-row span {
+  display: block;
+}
+.entry-row .account {
+  font-weight: normal;
+}
+.entry-row:nth-child(2) .account {
+  padding-left: 1.5rem;
+}
+.entry-row .debit,
+.entry-row .credit {
+  /* Base styling */
+  text-align: right;
+  font-family: monospace;
+  font-size: 0.95em;
+  min-height: 1em;
+  font-weight: bold;
+} /* Color applied by number-* classes */
+
+.explain-btn {
+  background-color: #a52a2a;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 0.4rem 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 0.5rem;
+  font-size: 0.9em;
+}
+.explain-btn:hover {
+  background-color: #800000;
+}
+
+.explanation {
+  display: none;
+  background-color: #f5e8e8;
+  border-left: 4px solid #a52a2a;
+  padding: 1rem 1.5rem;
+  margin-top: 1rem;
+  border-radius: 4px;
+  font-size: 0.95em;
+  color: #4a3f35;
+}
+.explanation p {
+  margin-bottom: 0.8rem;
+}
+.explanation p:last-child {
+  margin-bottom: 0;
+}
+/* Ensure explanation terms inherit color */
+.explanation span {
+  font-weight: bold;
+} /* Color applied via eq-*, term-* classes */
+.explanation .journal-entry {
+  margin-top: 0.8rem;
+  border-color: #e0c0c0;
+  background-color: #fff0f0;
+}
+.explanation .journal-entry .entry-row:nth-child(odd) {
+  background-color: #f9e9e9;
+}
+
+/* Final ledger */
+.final-ledger {
+  margin: 2.5rem 0;
+}
+.final-ledger h3 {
+  margin-bottom: 1.5rem;
+}
+
+#ledger-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0 2rem;
+  box-shadow: 0 1px 3px rgba(74, 63, 53, 0.15);
+  font-size: 0.95rem;
+  table-layout: fixed;
+}
+#ledger-table th,
+#ledger-table td {
+  border: 1px solid #d8cabb;
+  padding: 0.8rem;
+  text-align: left;
+  vertical-align: middle;
+  overflow-wrap: break-word;
+}
+#ledger-table th {
+  background-color: #5d4037;
+  color: #fdfbf5;
+  font-weight: bold;
+}
+/* Color header terms */
+#ledger-table th.term-debit {
+  background-color: #00695c;
+}
+#ledger-table th.term-credit {
+  background-color: #a52a2a;
+}
+
+#ledger-table tr:nth-child(even) {
+  background-color: #f7f3e9;
+}
+#ledger-table tr:hover {
+  background-color: #f0eade;
+}
+
+/* Specific column widths */
+#ledger-table th:first-child,
+#ledger-table td:first-child {
+  width: 35%;
+}
+#ledger-table th:nth-child(2),
+#ledger-table td:nth-child(2),
+#ledger-table th:nth-child(3),
+#ledger-table td:nth-child(3) {
+  width: 20%;
+}
+#ledger-table th:last-child,
+#ledger-table td:last-child {
+  width: 25%;
+}
+
+/* Align numbers and apply colors to values in specific columns */
+#ledger-table td:nth-child(2), /* Debit column values */
+#ledger-table td:nth-child(3), /* Credit column values */
+#ledger-table tfoot th:nth-child(2), /* Footer Debit total */
+#ledger-table tfoot th:nth-child(3)  /* Footer Credit total */ {
+  text-align: right;
+  font-family: monospace;
+  font-weight: bold;
+} /* Color applied by number-* classes */
+
+/* Balance column styling */
+#ledger-table td.balance-column {
+  text-align: right;
+  font-family: monospace;
+}
+/* Color applied by balance-dr/cr classes added via JS */
+
+/* Style footer row */
+#ledger-table tfoot tr {
+  background-color: #f5efe2;
+  font-weight: bold;
+  border-top: 2px solid #5d4037;
+}
+#ledger-table tfoot th {
+  background-color: inherit;
+  color: #4a3f35;
+}
+#ledger-table tfoot th:last-child {
+  text-align: center;
+  font-weight: normal;
+} /* Make "Debits=Credits" normal weight */
+
+/* Profit calculation - Keeping green */
+.profit-calculation {
+  background-color: #eafaea;
+  border: 1px solid #c0e0c0;
+  border-left: 5px solid #2e8b57;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-top: 1rem;
+}
+.profit-calculation h3 {
+  margin-bottom: 1rem;
+  color: #2e8b57;
+}
+.profit-calculation p {
+  margin-bottom: 0.5rem;
+  font-size: 1.05em;
+  display: flex;
+  justify-content: space-between;
+  color: #333;
+}
+.profit-calculation p span {
+  font-weight: bold;
+  font-family: monospace;
+  min-width: 60px;
+  text-align: right;
+  color: #1a643a;
+}
+.profit-calculation p:last-child {
+  font-weight: bold;
+  color: #2e8b57;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px dashed #a0d0a0;
+  font-size: 1.1em;
+}
+.profit-calculation p:last-child span {
+  color: #2e8b57;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Focus styles for accessibility - added via JS */
+
+/* Responsive design */
+@media (max-width: 768px) {
+  header,
+  footer {
+    padding: 1rem 0.5rem;
+  }
+  h1 {
+    font-size: 1.6rem;
+  }
+  h2 {
+    font-size: 1.3rem;
+  }
+  main {
+    padding: 0 0.5rem;
+  }
+  .content-section {
+    padding: 1rem 1.2rem;
+  }
+  .historical-figure {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+  .historical-figure img {
+    width: 100px;
+    height: 100px;
+  }
+  .entry-row {
+    grid-template-columns: 2fr 1fr 1fr;
+    font-size: 0.9rem;
+    padding: 0.5rem;
+  }
+  .entry-row:nth-child(2) .account {
+    padding-left: 1rem;
+  }
+  .final-ledger {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  #ledger-table {
+    font-size: 0.85rem;
+    min-width: 500px;
+    table-layout: auto;
+  }
+  #ledger-table th,
+  #ledger-table td {
+    padding: 0.5rem;
+    white-space: nowrap;
+  }
+  #ledger-table th:first-child,
+  #ledger-table td:first-child {
+    white-space: normal;
+  }
+  .t-account {
+    max-width: 95%;
+  }
+  .t-account-side {
+    padding: 0.5rem;
+  }
+  .t-side-header {
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+  .t-entry {
+    font-size: 0.85rem;
+  }
+  .t-amount {
+    min-width: 40px;
+    padding-right: 5px;
+  }
+  .navigation-buttons button {
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+  }
+  .editable-ducats {
+    max-width: 80px;
+    padding: 0.25rem 0.4rem;
+  }
+  .scenario li {
+    line-height: 2;
+  }
+}
+
+@media (max-width: 480px) {
+  #timeline-nav {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.3rem;
+  }
+  #timeline-nav button {
+    width: 100%;
+    text-align: center;
+  }
+  .account-card {
+    padding: 1rem;
+  }
+  .entry-row {
+    font-size: 0.8rem;
+    padding: 0.4rem;
+    grid-template-columns: 1.8fr 1fr 1fr;
+  }
+  .entry-row .account {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  .entry-row:nth-child(2) .account {
+    padding-left: 0.8rem;
+  }
+  #ledger-table {
+    font-size: 0.75rem;
+    min-width: 450px;
+  }
+  #ledger-table th,
+  #ledger-table td {
+    padding: 0.4rem;
+  }
+  .profit-calculation p {
+    font-size: 0.95em;
+  }
+  .profit-calculation p:last-child {
+    font-size: 1em;
+  }
+  .editable-ducats {
+    max-width: 70px;
+  }
+}
