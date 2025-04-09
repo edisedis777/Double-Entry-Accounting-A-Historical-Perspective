@@ -80,5 +80,8 @@ To run this project locally:
 ## Contributing 🤝
 Contributions are welcome!
 
+## Credits 🙏
+Portrait of Luca Pacioli: Public Domain, sourced via Wikimedia Commons. [Link](https://commons.wikimedia.org/w/index.php?curid=75356960)
+
 ## License 📄
 This project is licensed under the MIT License - see the [LICENSE.txt](LICENSE.txt) file for details (if you create one, otherwise state it here).
