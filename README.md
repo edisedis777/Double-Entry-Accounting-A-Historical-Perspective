@@ -1,6 +1,6 @@
 # Double-Entry Accounting: A Historical Perspective 📚
 
-![Project Screenshot Placeholder](https://via.placeholder.com/800x400/fdfbf5/4a3f35?text=Interactive+Accounting+Tutorial)
+<img width="747" alt="Screenshot 2025-04-09 at 13 43 59" src="https://github.com/user-attachments/assets/87c3c317-52fd-41a4-85ab-d76c6b73d5d1" />
 
 ## Description ✨
 This project is an interactive web-based tutorial designed to teach the fundamental principles of double-entry accounting through a simple historical lens. Inspired by Luca Pacioli, the "Father of Accounting".
