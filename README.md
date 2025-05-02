@@ -84,4 +84,4 @@ Contributions are welcome!
 Portrait of Luca Pacioli: Public Domain, sourced via Wikimedia Commons. [Link](https://commons.wikimedia.org/w/index.php?curid=75356960)
 
 ## License 📄
-This project is licensed under the MIT License.
+Distributed under the GNU Affero General Public License v3.0 License. See `LICENSE` for more information.
